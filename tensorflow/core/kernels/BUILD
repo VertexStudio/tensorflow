@@ -4672,8 +4672,8 @@ cc_library(
         ":string_strip_op",
         ":string_to_hash_bucket_op",
         ":substr_op",
-        ":unicode_ops",
-        ":unicode_script_op",
+#        ":unicode_ops",
+#        ":unicode_script_op",
     ],
 )
 
@@ -4685,7 +4685,7 @@ cc_library(
         "//tensorflow/core:framework",
         "//tensorflow/core:lib",
         "//tensorflow/core:protos_all_cc",
-        "@icu//:common",
+#        "@icu//:common",
     ],
 )
 

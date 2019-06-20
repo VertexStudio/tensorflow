@@ -493,7 +493,10 @@ tf_cc_shared_object(
             "-Wl,-exported_symbols_list",  # This line must be directly followed by the exported_symbols.lds file
             "$(location //tensorflow:tf_exported_symbols.lds)",
         ],
-        "//tensorflow:windows": [],
+        "//tensorflow:windows": [
+            "-def:" +  # This line must be directly followed by the exported_symbols_msvc.lds file
+            "$(location //tensorflow:tf_exported_symbols_msvc.lds)",
+        ],
         "//conditions:default": [
             "-z defs",
             "-Wl,--version-script",  #  This line must be directly followed by the version_script.lds file
@@ -503,6 +506,7 @@ tf_cc_shared_object(
     visibility = ["//visibility:public"],
     deps = [
         "//tensorflow:tf_exported_symbols.lds",
+        "//tensorflow:tf_exported_symbols_msvc.lds",
         "//tensorflow:tf_version_script.lds",
         "//tensorflow/c:c_api",
         "//tensorflow/c/eager:c_api",
@@ -518,6 +522,7 @@ exports_files(
     [
         "tf_version_script.lds",
         "tf_exported_symbols.lds",
+        "tf_exported_symbols_msvc.lds",
     ],
 )
 
